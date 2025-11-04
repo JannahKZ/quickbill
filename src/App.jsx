@@ -1,9 +1,9 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import Login from "./pages/LoginForm.jsx";
+import Register from "./pages/RegisterForm.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 function App() {
   return (
