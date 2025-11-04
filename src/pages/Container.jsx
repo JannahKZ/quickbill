@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import InfoContent from "./InfoContent";
+import './Register.css';
+import './Login.css';
 
 function Container() {
   const [isLoginActive, setIsLoginActive] = useState(true);

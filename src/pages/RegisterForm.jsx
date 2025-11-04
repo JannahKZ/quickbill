@@ -1,58 +1,82 @@
-import React, { useState } from "react";
+import React from "react";
 
-function RegisterForm({ switchForm }) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-    alert(`Register submitted!\nUsername: ${username}\nEmail: ${email}\nPassword: ${password}`);
-  };
-
+export default function RegisterForm({ onSwitch }) {
   return (
-    <div className="form-box Register">
-      <h2 className="animation" style={{ "--li": 17, "--S": 0 }}>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div className="input-box animation" style={{ "--li": 18, "--S": 1 }}>
-          <input 
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            required 
+    <>
+      <h2 className="text-3xl font-bold text-center mb-6 text-white">
+        Register
+      </h2>
+      <form>
+        <div className="relative w-full h-[50px] mb-6">
+          <input
+            type="text"
+            required
+            className="peer w-full h-full bg-transparent border-b-2 border-white outline-none text-white font-semibold pr-6 transition-all focus:border-[#e46033]"
           />
-          <label>Username</label>
-          <box-icon type="solid" name="user" color="gray"></box-icon>
+          <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-1 peer-focus:text-[#e46033]">
+            Username
+          </label>
+          <box-icon
+            type="solid"
+            name="user"
+            color="gray"
+            class="absolute right-0 top-1/2 -translate-y-1/2"
+          ></box-icon>
         </div>
-        <div className="input-box animation" style={{ "--li": 19, "--S": 2 }}>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+
+        <div className="relative w-full h-[50px] mb-6">
+          <input
+            type="email"
+            required
+            className="peer w-full h-full bg-transparent border-b-2 border-white outline-none text-white font-semibold pr-6 transition-all focus:border-[#e46033]"
           />
-          <label>Email</label>
-          <box-icon type="solid" name="envelope" color="gray"></box-icon>
+          <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-1 peer-focus:text-[#e46033]">
+            Email
+          </label>
+          <box-icon
+            type="solid"
+            name="envelope"
+            color="gray"
+            class="absolute right-0 top-1/2 -translate-y-1/2"
+          ></box-icon>
         </div>
-        <div className="input-box animation" style={{ "--li": 19, "--S": 3 }}>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+
+        <div className="relative w-full h-[50px] mb-6">
+          <input
+            type="password"
+            required
+            className="peer w-full h-full bg-transparent border-b-2 border-white outline-none text-white font-semibold pr-6 transition-all focus:border-[#e46033]"
           />
-          <label>Password</label>
-          <box-icon type="solid" name="lock-alt" color="gray"></box-icon>
+          <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-1 peer-focus:text-[#e46033]">
+            Password
+          </label>
+          <box-icon
+            type="solid"
+            name="lock-alt"
+            color="gray"
+            class="absolute right-0 top-1/2 -translate-y-1/2"
+          ></box-icon>
         </div>
-        <div className="input-box animation" style={{ "--li": 20, "--S": 4 }}>
-          <button className="btn" type="submit">Register</button>
-        </div>
-        <div className="regi-link animation" style={{ "--li": 21, "--S": 5 }}>
-          <p>Already have an account? <a href="#" onClick={switchForm}>Sign In</a></p>
-        </div>
+
+        <button
+          type="submit"
+          className="relative w-full h-[45px] rounded-full font-semibold border-2 border-[#e46033] overflow-hidden z-10 group"
+        >
+          <span className="absolute top-[-100%] left-0 h-[300%] w-full bg-[linear-gradient(#25252b,#e46033,#25252b,#e46033)] transition-all duration-500 group-hover:top-0"></span>
+          <span className="relative z-20 text-white">Register</span>
+        </button>
+
+        <p className="text-sm text-center mt-5 text-white">
+          Already have an account?{" "}
+          <button
+            type="button"
+            className="text-[#e46033] font-semibold underline"
+            onClick={onSwitch}
+          >
+            Sign In
+          </button>
+        </p>
       </form>
-    </div>
+    </>
   );
 }
-
-export default RegisterForm;

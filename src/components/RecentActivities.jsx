@@ -1,42 +1,29 @@
 import React from "react";
-
-const activities = [
-  { id: "QU0123456787", date: "07 July 2025", type: "QUOTATION" },
-  { id: "INV0123456789", date: "18 Oct 2025", type: "INVOICE" },
-  { id: "QU0123456788", date: "25 Oct 2025", type: "QUOTATION" },
-  { id: "INV0123456789", date: "25 Oct 2025", type: "INVOICE" },
-  { id: "QU0123456789", date: "25 Oct 2025", type: "QUOTATION" },
-  { id: "INV0123456786", date: "25 Oct 2025", type: "INVOICE" },
-];
+import { Activity } from "lucide-react";
 
 export default function RecentActivities() {
-  return (
-    <div className="bg-[#3b2f2f] rounded-xl text-white p-6 shadow-lg">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="font-bold text-lg">Recent Activities</h2>
-        <button className="text-sm bg-[#7b5e57] px-3 py-1 rounded-full hover:bg-[#5f443b]">
-          See All
-        </button>
-      </div>
+  const activities = [
+    { id: 1, text: "New order received from Ahmad", time: "2 hours ago" },
+    { id: 2, text: "Invoice #12345 sent to customer", time: "5 hours ago" },
+    { id: 3, text: "Payment received from Ali", time: "Yesterday" },
+  ];
 
-      <div className="space-y-3">
-        {activities.map((item) => (
-          <div
-            key={item.id}
-            className="flex justify-between items-center bg-[#2b1a0f] rounded-lg px-4 py-2 text-sm"
+  return (
+    <div className="bg-white rounded-2xl shadow-lg p-6">
+      <h2 className="text-xl font-semibold text-[#3b2f2f] mb-4 flex items-center gap-2">
+        <Activity className="text-[#c7a17a]" /> Recent Activities
+      </h2>
+      <ul className="space-y-3 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-[#c7a17a]/40">
+        {activities.map((act) => (
+          <li
+            key={act.id}
+            className="flex justify-between items-center border-b border-gray-200 pb-3 last:border-b-0"
           >
-            <div>
-              <p className="font-bold">{item.id}</p>
-              <p className="text-xs text-gray-300">
-                {item.date} — {item.type}
-              </p>
-            </div>
-            <button className="bg-[#7b5e57] px-4 py-1 rounded-full text-xs font-bold hover:bg-[#5f443b]">
-              Open
-            </button>
-          </div>
+            <span className="text-gray-700">{act.text}</span>
+            <span className="text-sm text-gray-500">{act.time}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
