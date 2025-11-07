@@ -1,102 +1,55 @@
-import React, { useState } from "react";
-import "./Profile.css";
+import React from "react";
+import Sidebar from "../../components/Sidebar";
+import Topbar from "../../components/Topbar";
+import { useNavigate } from "react-router-dom";
+import "./settings.css";
 
 const Profile = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSave = (e) => {
-    e.preventDefault();
-    alert("Profile changes saved successfully!");
-    console.log("Saved data:", formData);
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="profile-container">
-      <h2 className="settings-title">SETTINGS</h2>
-      <p className="settings-subtitle">
-        Manage your account settings and preferences
-      </p>
-
-      <div className="tab-buttons">
-        <button className="tab active">Profile</button>
-        <button className="tab">Company</button>
-        <button className="tab">Preference</button>
-        <button className="tab">FAQ</button>
-      </div>
-
-      <div className="profile-card">
-        <div className="profile-left">
-          <div className="profile-picture">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-              alt="Profile"
-            />
-          </div>
-          <p className="username">@username</p>
+    <div className="settings-layout">
+      <Sidebar />
+      <div className="settings-main">
+        <div className="topbar">
+          <Topbar />
         </div>
 
-        <div className="profile-right">
-          <form onSubmit={handleSave}>
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              required
-            />
+        <div className="settings-content">
+          <h2 className="settings-title">SETTINGS</h2>
+          <p className="settings-subtitle">Manage your profile information</p>
 
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
+          <div className="tab-buttons">
+            <button className="tab active" onClick={() => navigate("/settings")}>Profile</button>
+            <button className="tab" onClick={() => navigate("/settings/company")}>Company</button>
+            <button className="tab" onClick={() => navigate("/settings/preference")}>Preference</button>
+            <button className="tab" onClick={() => navigate("/settings/faq")}>FAQ</button>
+          </div>
 
-            <label>Phone</label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Enter your phone number"
-              required
-            />
-
-            <label>Password</label>
-            <div className="password-field">
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter new password"
-              />
-              <button type="button" className="change-btn">
-                Change
-              </button>
+          <div className="profile-card">
+            <div className="profile-left">
+              <div className="profile-picture">
+                <img src="https://i.pravatar.cc/90" alt="Profile" />
+              </div>
+              <p className="username">Anna Katrina Manchesi</p>
             </div>
 
-            <button type="submit" className="save-btn">
-              SAVE CHANGES
-            </button>
-          </form>
+            <div className="profile-right">
+              <label>Full Name</label>
+              <input type="text" placeholder="Enter full name" />
+
+              <label>Email</label>
+              <input type="email" placeholder="Enter email" />
+
+              <label>Password</label>
+              <div className="password-field">
+                <input type="password" placeholder="********" />
+                <button className="change-btn">Change</button>
+              </div>
+
+              <button className="save-btn">SAVE CHANGES</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
