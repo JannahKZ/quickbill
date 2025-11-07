@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginForm({ onSwitch }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -16,7 +21,14 @@ export default function LoginForm({ onSwitch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Login Data:", formData);
+
+    // Example validation logic (can expand later)
+    if (formData.email && formData.password) {
+      toast.success("🍫 Welcome back!");
+      setTimeout(() => navigate("/dashboard"), 1500);
+    } else {
+      toast.error("Please fill in all fields!");
+    }
   };
 
   return (

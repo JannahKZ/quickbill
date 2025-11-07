@@ -1,0 +1,262 @@
+/* ===============================
+   GLOBAL SETTINGS LAYOUT
+================================ */
+
+.settings-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #c1956c;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar fixed on left */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Topbar fixed on top of the main area */
+.settings-main {
+  margin-left: 260px; /* match sidebar width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 260px;
+  right: 0;
+  height: 70px;
+  background-color: #3b2f2f;
+  z-index: 9;
+}
+
+/* The actual scrollable content below Topbar */
+.settings-content {
+  margin-top: 80px;
+  padding: 30px 50px;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+  color: #3c1e0e;
+}
+
+/* ===============================
+   TITLES & BUTTONS
+================================ */
+
+.settings-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #3c1e0e;
+}
+
+.settings-subtitle {
+  font-size: 13px;
+  color: #3c1e0e;
+  margin-bottom: 15px;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background-color: #eed8c5;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 20px;
+  font-weight: 600;
+  color: #3c1e0e;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tab.active {
+  background-color: #3c1e0e;
+  color: #eed8c5;
+}
+
+.tab:hover {
+  background-color: #b68b60;
+  color: #fff;
+}
+
+/* ===============================
+   CARD SHARED STYLE
+================================ */
+
+.settings-card {
+  background-color: #3c1e0e;
+  border-radius: 15px;
+  padding: 25px;
+  color: #eed8c5;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   PROFILE PAGE
+================================ */
+
+.profile-card {
+  display: flex;
+  background-color: #3c1e0e;
+  border-radius: 15px;
+  padding: 25px;
+  color: #eed8c5;
+}
+
+.profile-left {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #b68b60;
+  padding-right: 20px;
+}
+
+.profile-picture img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #b68b60;
+}
+
+.username {
+  margin-top: 10px;
+  color: #eed8c5;
+  font-size: 14px;
+}
+
+.profile-right {
+  flex: 2;
+  padding-left: 30px;
+}
+
+.profile-right label {
+  display: block;
+  font-weight: 600;
+  color: #eed8c5;
+  margin-top: 15px;
+}
+
+.profile-right input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #eed8c5;
+  color: #3c1e0e;
+  font-weight: 500;
+  outline: none;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.change-btn,
+.save-btn {
+  background-color: #eed8c5;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #3c1e0e;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.change-btn:hover,
+.save-btn:hover {
+  background-color: #b68b60;
+  color: white;
+}
+
+.save-btn {
+  margin-top: 20px;
+  border-radius: 25px;
+}
+
+/* ===============================
+   FORM STYLES (Company, Pref, FAQ)
+================================ */
+
+.company-form label,
+.preference-form label,
+.faq-content label {
+  display: block;
+  font-weight: 600;
+  color: #eed8c5;
+  margin-top: 15px;
+}
+
+.company-form input,
+.preference-form select,
+.preference-form input[type='text'],
+.preference-form textarea,
+.faq-content input,
+.faq-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #eed8c5;
+  color: #3c1e0e;
+  font-weight: 500;
+  outline: none;
+}
+
+.company-form button,
+.preference-form button,
+.faq-content button {
+  margin-top: 20px;
+  background-color: #eed8c5;
+  color: #3c1e0e;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.company-form button:hover,
+.preference-form button:hover,
+.faq-content button:hover {
+  background-color: #b68b60;
+  color: white;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .settings-main {
+    margin-left: 80px;
+  }
+  .topbar {
+    left: 80px;
+  }
+  .profile-card {
+    flex-direction: column;
+  }
+  .profile-left {
+    border-right: none;
+    border-bottom: 1px solid #b68b60;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+}
