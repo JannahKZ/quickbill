@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterForm({ onSwitch }) {
   const [formData, setFormData] = useState({
@@ -8,6 +11,8 @@ export default function RegisterForm({ onSwitch }) {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -18,7 +23,14 @@ export default function RegisterForm({ onSwitch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Register Data:", formData);
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
+    toast.success("🎉 You’ve successfully registered!");
+    setTimeout(() => navigate("/dashboard"), 1500);
   };
 
   return (
